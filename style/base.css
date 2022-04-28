@@ -1,8 +1,35 @@
 @font-face {
-    font-family: komika;
+    font-family: komikrak;
     src: url("../assets/fonts/KOMIKRAK.ttf");
 }
 
+@font-face {
+    font-family: komikabg;
+    src: url("../assets/fonts/KOMIKABG.ttf");
+}
+
+@font-face {
+    font-family: beautiful-people;
+    src: url("../assets/fonts/beautiful-people.ttf");
+}
+
+@keyframes skew-anim {
+    25% {
+        transform: skew(1deg, 1deg);
+    }
+
+    50% {
+        transform: skew(0, 0);
+    }
+
+    75% {
+        transform: skew(-1deg, -1deg);
+    }
+
+    100% {
+        transform: skew(0, 0);
+    }
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,14 +38,18 @@
 
 body {
     font-family: "poppins", sans-serif;
+    background-color: #121212;
 }
 
 .navbar {
+    position: fixed;
+    width: 100%;
     display: flex;
     margin: 0%;
     padding: 0%;
     list-style-type: none;
     background-color: #212121;
+    z-index: 1;
 }
 
 .navbar ul {
@@ -28,8 +59,8 @@ body {
 .navbar .navbar-heading {
     margin-left: 2vw;
     margin-right: calc(30vw/2);
-    font-family: komika;
-    font-size: 3em;
+    font-family: komikrak;
+    font-size: 4em;
     background: -webkit-linear-gradient(#f00, #f80, #fa0);
     background-clip: text;
     -webkit-background-clip: text;
@@ -40,7 +71,7 @@ body {
     display: block;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 25px 20px;
+    padding: 2em 1em;
     font-size: 1em;
     color: #d35b36;
     letter-spacing: 4px;
@@ -55,4 +86,7 @@ body {
     background-color: #fff;
     color: #f4511e;
     transform: scale(1.1);
+}
+.nav-space {
+    padding: 4em 0;
 }
