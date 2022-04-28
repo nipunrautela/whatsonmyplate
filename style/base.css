@@ -1,0 +1,58 @@
+@font-face {
+    font-family: komika;
+    src: url("../assets/fonts/KOMIKRAK.ttf");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "poppins", sans-serif;
+}
+
+.navbar {
+    display: flex;
+    margin: 0%;
+    padding: 0%;
+    list-style-type: none;
+    background-color: #212121;
+}
+
+.navbar ul {
+    justify-content: center;
+}
+
+.navbar .navbar-heading {
+    margin-left: 2vw;
+    margin-right: calc(30vw/2);
+    font-family: komika;
+    font-size: 3em;
+    background: -webkit-linear-gradient(#f00, #f80, #fa0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar li a {
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 25px 20px;
+    font-size: 1em;
+    color: #d35b36;
+    letter-spacing: 4px;
+}
+
+.navbar ul li {
+    display: inline-block;
+    transition: transform .1s;
+}
+
+.navbar ul li:hover {
+    background-color: #fff;
+    color: #f4511e;
+    transform: scale(1.1);
+}
