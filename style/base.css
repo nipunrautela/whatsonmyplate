@@ -45,8 +45,9 @@ body {
     position: fixed;
     width: 100%;
     display: flex;
-    margin: 0%;
-    padding: 0%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
     list-style-type: none;
     background-color: #212121;
     z-index: 1;
