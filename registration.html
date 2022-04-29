@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="./style/form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Register</title>
+
+    <script>
+      function hidepassword() {
+        var pwd = document.getElementById('password')
+        pwd.type = "password";
+      }
+      
+      function showpassword() {
+        var pwd = document.getElementById('password')
+        pwd.type = "text";
+      }
+    </script>
 </head>
 <body>
     <div class="navbar">
@@ -61,7 +73,7 @@
               Password 
             </label>
             <div class="form-show-pass">
-              <button onmousedown="showpassword()" onmouseup="hidepassword()">
+              <button type="button" onmousedown="showpassword()" onmouseup="hidepassword()">
                 <i class="fa fa-eye" style="font-size:24px"></i>
               </button>
             </div>

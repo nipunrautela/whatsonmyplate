@@ -50,7 +50,7 @@ body {
     padding: 0;
     list-style-type: none;
     background-color: #212121;
-    z-index: 1;
+    z-index: 2;
 }
 
 .navbar ul {
