@@ -43,10 +43,10 @@
           />
           <h2>Get a diet plan</h2>
           <p>
-            Here, you will get to see different diet plans curated by us and
-            detailed explanation about why each item is included and the
-            preparation methods too along with several healthy recipes
+            Here, you will get to see different diet plans curated by us, along with 
+            detailed explanations and preparation methods. We've also included several healthy recipes for you to try out!
           </p>
+          <button type="button" id="start-button">Get Started</button>
         </div>
       </div>
 
@@ -57,9 +57,10 @@
           />
           <h2>Make your own diet plan</h2>
           <p>
-            If you already have a diet you're working with or you want to build
-            one yourself you can keep it here and edit it whenever you want.
+            Already have a diet you're working with? Or are you itching to create a new one? 
+            With our diet planner, you can add the details and edit it whenever you want!
           </p>
+          <button type="button" id="start-button">Get Started</button>
         </div>
       </div>
     </div>
