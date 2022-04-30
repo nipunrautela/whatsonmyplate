@@ -90,10 +90,10 @@ body {
 
 .form-field::after {
     content: '';
-    font-size: .8em;
+    font-size: 1em;
     color: red;
     position: relative;
-    top: -1.5em;
+    top: -1em;
     left: 2.8em;
 }
 

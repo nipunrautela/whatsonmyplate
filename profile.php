@@ -12,6 +12,11 @@
     />
     <title>My Profile</title>
 </head>
+<?php
+if (!$_SESSION["username"] && !$_COOKIE["womp-cookie"]) {
+  header("location: ./registration.php");
+}
+?>
 <body>
     <?php include './navbar.html'; ?>
     

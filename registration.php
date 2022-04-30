@@ -8,8 +8,38 @@
   <link rel="stylesheet" href="./style/form.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Register</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./script/base.js"></script>
+  <script src="./script/form.js"></script>
 </head>
+
+<?php
+  if ($_SERVER["REQUEST_METHOD"] == "post") {
+    $name = $_POST["name"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $repassword = $_POST["repassword"];
+    $phno = $_POST["phno"];
+    $tnc = $_POST["tnc"];
+    $pp = $_POST["pp"];
+
+    if (!$tnc || !$pp)
+      // die("Error: terms and condition or privacy policy not accepted");
+
+    $conn = mysqli_connect("localhost", "root", "", "cse3002");
+    if (!$conn)
+      print mysqli_error($conn);
+
+    $query = 'INSERT INTO customer(customer_name, username, passhash, email, mobile) VALUES("dwada", "Dwadad", "Dwadad", "Dwadad", "Dwadad");';
+    mysqli_execute($conn, $query);
+    // $stmt = mysqli_prepare($conn, $query);
+    // mysqli_stmt_bind_param($stmt, "sssss", $name, $username, $password, $repassword, $phno);
+    // mysqli_stmt_execute($stmt);
+
+    mysqli_close($conn);
+  }
+?>
+
 <body>
     <?php include './navbar.html'; ?>
 
@@ -26,11 +56,11 @@
         <div class="form-spacer"></div>
         <form action="registration.php" method="post">
           <div class="form-field">
-            <input type="text" class="form-field-input" placeholder=" " id="name" />
+            <input type="text" class="form-field-input" placeholder=" " name="name" id="name" />
             <label for="username" class="form-field-label">Full Name</label>
           </div>
           <div class="form-field">
-            <input type="text" class="form-field-input" placeholder=" " id="username" />
+            <input type="text" class="form-field-input" placeholder=" " name="username" id="username" />
             <label for="username" class="form-field-label">Username</label>
           </div>
           <div class="form-field">
@@ -38,7 +68,7 @@
             <label for="username" class="form-field-label">Email</label>
           </div>
           <div class="form-field">
-            <input type="password" class="form-field-input" placeholder=" " id="password" />
+            <input type="password" class="form-field-input" placeholder=" " name="password" id="password" />
             <label for="password" class="form-field-label">
               Password 
             </label>
@@ -49,27 +79,31 @@
             </div>
           </div>
           <div class="form-field">
-            <input type="password" class="form-field-input" placeholder=" " id="repassword" />
+            <input type="password" class="form-field-input" placeholder=" " name="repassword" id="repassword" />
             <label for="password" class="form-field-label">Repeat Password</label>
+          </div>
+          <div class="form-field">
+            <input type="number" class="form-field-input" placeholder=" " name="phno" id="phno" />
+            <label for="username" class="form-field-label">Mobile</label>
           </div>
           <div>
             <input type="checkbox" class="form-field-checkbox" name="tnc" id="tnc">
-            <label for="remember" class="form-checkbox-label">
-              Accept <a href="">Terms</a> and <a href="">Condition</a>
+            <label for="tnc" class="form-checkbox-label">
+              Accept <a href="" target="_blank">Terms</a> and <a href="" target="_blank">Condition</a>
             </label>
           </div>
           <div>
             <input type="checkbox" class="form-field-checkbox" name="pp" id="pp">
-            <label for="remember" class="form-checkbox-label">
-              Accept <a href="">Privacy Policy</a>
+            <label for="pp" class="form-checkbox-label">
+              Accept <a href="" target="_blank">Privacy Policy</a>
             </label>
           </div>
           <div>
-            <button class="form-submit-button">Register</button>
+            <button type="submit" class="form-submit-button">Register</button>
           </div>
           <div class="form-links">
             Already have an account?
-            <a href="./signin.html">Sign In</a>
+            <a href="./signin.php">Sign In</a>
           </div>
           <div class="form-links">
             Forgot password?
@@ -81,11 +115,3 @@
     
 </body>
 </html>
-<?php
-  if ($_SERVER["REQUEST_METHOD"] != "post")
-    die;
-  $conn = mysqli_connect("localhost", "cse3002", "Test@0987");
-  if (!$conn)
-    print mysqli_error($conn);
-  print $conn
-?>

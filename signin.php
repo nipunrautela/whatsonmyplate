@@ -54,11 +54,11 @@
             <label for="remember" class="form-checkbox-label">Remember me</label>
           </div>
           <div>
-            <button class="form-submit-button">Sign In</button>
+            <button type="button" class="form-submit-button">Sign In</button>
           </div>
           <div class="form-links">
             New here?
-            <a href="./registration.html">Create an account</a>
+            <a href="./registration.php">Create an account</a>
           </div>
           <div class="form-links">
             Forgot password?
