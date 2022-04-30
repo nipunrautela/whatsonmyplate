@@ -22,26 +22,7 @@
     </script>
   </head>
   <body>
-    <div class="navbar">
-      <div class="navbar-heading"><a href=".">WOMP</a></div>
-      <ul>
-        <li>
-          <a href=".">Home</a>
-        </li>
-        <li>
-          <a href="#">Food Database</a>
-        </li>
-        <li>
-          <a href="#">Popular Diets</a>
-        </li>
-        <li>
-          <a href="#">Consult</a>
-        </li>
-        <li>
-          <a href="#">My Profile</a>
-        </li>
-      </ul>
-    </div>
+    <?php include './navbar.html'; ?>
 
     <div class="nav-space"></div>
 
