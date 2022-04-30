@@ -30,6 +30,13 @@
         transform: skew(0, 0);
     }
 }
+
+@keyframes get-started {
+    20% {
+        transform: translateY(-.5em);
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
