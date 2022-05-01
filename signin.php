@@ -20,6 +20,8 @@
         pwd.type = "text";
       }
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./script/form.js"></script>
   </head>
   <body>
     <?php include './navbar.html'; ?>
@@ -54,11 +56,11 @@
             <label for="remember" class="form-checkbox-label">Remember me</label>
           </div>
           <div>
-            <button class="form-submit-button">Sign In</button>
+            <button type="submit" class="form-submit-button">Sign In</button>
           </div>
           <div class="form-links">
             New here?
-            <a href="./registration.html">Create an account</a>
+            <a href="./registration.php">Create an account</a>
           </div>
           <div class="form-links">
             Forgot password?
@@ -69,3 +71,20 @@
     </div>
   </body>
 </html>
+
+<?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $hashed_password = hash("sha256", $_POST["repassword"]);
+    $remember = $_POST["remember"];
+
+    $conn = mysqli("localhost", "cse3002", "");
+    if (!$conn)
+      print mysqli_error($conn);
+    mysqli_select_db($conn, "cse3002");
+
+    $query = "SELECT username, passhash FROM customer WHERE username=? and passhash=?;";
+    $stmt = mysqli_prepare($conn, $query);
+  }
+?>

@@ -12,6 +12,17 @@
     />
     <title>My Profile</title>
 </head>
+<?php
+if ($_SESSION["username"]) {
+
+}
+elseif ($_COOKIE["womp-cookie"]) {
+
+}
+else {
+  header("location: ./signin.php");
+}
+?>
 <body>
     <?php include './navbar.html'; ?>
     
