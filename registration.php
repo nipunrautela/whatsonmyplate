@@ -14,27 +14,28 @@
 </head>
 
 <?php
-  if ($_SERVER["REQUEST_METHOD"] == "post") {
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $repassword = $_POST["repassword"];
+    $email = $_POST["email"];
+    $hashed_password = hash("sha256", $_POST["password"]);
     $phno = $_POST["phno"];
     $tnc = $_POST["tnc"];
     $pp = $_POST["pp"];
 
     if (!$tnc || !$pp)
-      // die("Error: terms and condition or privacy policy not accepted");
+      die("Error: terms and condition or privacy policy not accepted");
 
-    $conn = mysqli_connect("localhost", "root", "", "cse3002");
+    $conn = mysqli_connect("localhost", "cse3002", "");
     if (!$conn)
       print mysqli_error($conn);
-
-    $query = 'INSERT INTO customer(customer_name, username, passhash, email, mobile) VALUES("dwada", "Dwadad", "Dwadad", "Dwadad", "Dwadad");';
-    mysqli_execute($conn, $query);
-    // $stmt = mysqli_prepare($conn, $query);
-    // mysqli_stmt_bind_param($stmt, "sssss", $name, $username, $password, $repassword, $phno);
-    // mysqli_stmt_execute($stmt);
+    mysqli_select_db($conn,"cse3002");
+    $query = 'INSERT INTO customer(customer_name, username, passhash, email, mobile) VALUES(?,?,?,?,?);';
+    mysqli_query($conn, $query);
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sssss", $name, $username, $hashed_password, $email, $phno);
+    mysqli_stmt_execute($stmt);
 
     mysqli_close($conn);
   }
@@ -64,7 +65,7 @@
             <label for="username" class="form-field-label">Username</label>
           </div>
           <div class="form-field">
-            <input type="text" class="form-field-input" placeholder=" " id="email" />
+            <input type="text" class="form-field-input" placeholder=" " name="email" id="email" />
             <label for="username" class="form-field-label">Email</label>
           </div>
           <div class="form-field">

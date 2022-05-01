@@ -1,3 +1,15 @@
+$(document).ready(function () {
+  $("input").blur(function () {
+    console.log(this.value);
+    if (!checkMail(this.value)) console.log("Sad");
+  });
+
+  //   $("button.form-submit-button").click(function () {
+  //     console.log("submit plz");
+  //     $("#form").submit();
+  //   });
+});
+
 function checkMail(mail) {
   var re = /^[a-zA-Z0-9%_\.]@[a-z]+[\.a-z]+/;
   if (mail.value.match(re)) return true;
@@ -17,12 +29,3 @@ function checkName(name) {
   }
   return false;
 }
-
-$("input").blur(function () {
-  console.log(this.value);
-  if (!checkMail(this.value)) console.log("Sad");
-});
-
-$(".form-submit-button").click(function () {
-  $("#form").submit();
-});
