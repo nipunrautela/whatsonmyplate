@@ -13,11 +13,25 @@
     <title>My Profile</title>
 </head>
 <?php
+session_start();
+
+if (isset($_GET["logout"])) {
+  session_unset();
+  setcookie("womp-cookie", "", time()-1);
+  header("location: ./signin.php");
+}
+
 if ($_SESSION["username"]) {
 
 }
 elseif ($_COOKIE["womp-cookie"]) {
-
+  $cookie = explode(" ", $_COOKIE["womp-cookie"]);
+  $conn = mysqli_connect("localhost", "cse3002", "", "cse3002");
+  $query = "SELECT * FROM customer WHERE username=$cookie[0] AND passhash=$cookie[1]";
+  $result = mysqli_query($conn, $query);
+  
+  $data = mysqli_fetch_array($result);
+  print_r($data);
 }
 else {
   header("location: ./signin.php");
@@ -25,6 +39,9 @@ else {
 ?>
 <body>
     <?php include './navbar.html'; ?>
-    
+    <form style="display: flex; width:100%; justify-content:center; position: relative" action="./profile.php" method="get">
+      <input type="hidden" name="logout" value="logout">
+      <button style="top: 10em; padding: 2em; position: relative;">Logout</button>
+    </form>
 </body>
 </html>

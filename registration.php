@@ -81,7 +81,7 @@
           </div>
           <div class="form-field">
             <input type="password" class="form-field-input" placeholder=" " name="repassword" id="repassword" />
-            <label for="password" class="form-field-label">Repeat Password</label>
+            <label for="repassword" class="form-field-label">Repeat Password</label>
           </div>
           <div class="form-field">
             <input type="number" class="form-field-input" placeholder=" " name="phno" id="phno" />

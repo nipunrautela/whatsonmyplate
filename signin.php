@@ -39,11 +39,11 @@
         <div class="form-spacer"></div>
         <form action="signin.php" method="post">
           <div class="form-field">
-            <input type="text" class="form-field-input" placeholder=" " id="email" />
-            <label for="username" class="form-field-label">Email</label>
+            <input type="text" class="form-field-input" placeholder=" " id="username" name="username" />
+            <label for="username" class="form-field-label">Username</label>
           </div>
           <div class="form-field">
-            <input type="password" class="form-field-input" placeholder=" " id="password" />
+            <input type="password" class="form-field-input" placeholder=" " id="password" name="password" />
             <label for="password" class="form-field-label">Password</label>
             <div class="form-show-pass">
               <button type="button" onmousedown="showpassword()" onmouseup="hidepassword()">
@@ -52,7 +52,7 @@
             </div>
           </div>
           <div>
-            <input type="checkbox" class="form-field-checkbox" name="remember" id="remember">
+            <input type="checkbox" class="form-field-checkbox" name="remember" id="remember" value="remember">
             <label for="remember" class="form-checkbox-label">Remember me</label>
           </div>
           <div>
@@ -73,18 +73,33 @@
 </html>
 
 <?php
+  session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $hashed_password = hash("sha256", $_POST["repassword"]);
+    $hashed_password = hash("sha256", $_POST["password"]);
     $remember = $_POST["remember"];
 
-    $conn = mysqli("localhost", "cse3002", "");
+    $conn = mysqli_connect("localhost", "cse3002", "");
     if (!$conn)
       print mysqli_error($conn);
     mysqli_select_db($conn, "cse3002");
 
     $query = "SELECT username, passhash FROM customer WHERE username=? and passhash=?;";
     $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $username, $hashed_password);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $user, $passh);
+    mysqli_stmt_fetch($stmt);
+    if ($user) {
+      $_SESSION["username"] = $username;
+      // cookie expire after 24 days
+      if ($remember)
+        setcookie("womp-cookie", $username." ".$hashed_password, time()+(24*24*60*60));
+      mysqli_close($conn);
+      header("location: ./profile.php");
+    }
+
+    mysqli_close($conn);
   }
 ?>

@@ -46,7 +46,7 @@
             Here, you will get to see different diet plans curated by us, along with 
             detailed explanations and preparation methods. We've also included several healthy recipes for you to try out!
           </p>
-          <button type="button">Get Started</button>
+          <button type="button" id="browse-plan">Browse Diet Plans</button>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
             Already have a diet you're working with? Or are you itching to create a new one? 
             With our diet planner, you can add the details and edit it whenever you want!
           </p>
-          <button type="button">Get Started</button>
+          <button type="button" id="make-plan">Make your own</button>
         </div>
       </div>
     </div>
